@@ -30,8 +30,12 @@ import java.util.List;
 
 import static android.R.attr.resource;
 public class ListActivity extends AppCompatActivity {
+
+
     Context cn ;
+    //All user name in the String array
     String name [] = {"Ishtiak","tajul","saif","rahman","shuvojit","Rupa's Lover"};
+    // all image store here
     int image[] = {R.drawable.picture,
             R.drawable.pic, R.drawable.unnamed,
             R.drawable.icon_hammer_2,
@@ -40,7 +44,9 @@ public class ListActivity extends AppCompatActivity {
             R.drawable.logo,
             R.drawable.logo2,
             R.drawable.nav_back_2};
+    //all phn number store here
     String[] phn_number = {"01703490802","01703490802","01703490802","01762741757","0176223359", "01762741757"};
+
 
     List<String>  nameArray = new ArrayList();
     List<Integer> imageArray = new ArrayList();
@@ -51,6 +57,7 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
         ListView listView = (ListView) findViewById(R.id.lv);
         cn = this;
+        //using for loop for encreasing the data name image and phn number
         for (int i =0; i<=10; i++){
             for (int j=0; j<name.length && j< image.length && j<phn_number.length; j++){
                 nameArray.add(name[j]);
@@ -58,6 +65,7 @@ public class ListActivity extends AppCompatActivity {
                 phn.add(phn_number[j]);
             }
         }
+
         listView.setAdapter(new myAdapter(this, nameArray, imageArray, phn));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -86,14 +94,14 @@ public class ListActivity extends AppCompatActivity {
     }
 }
 
-    class myAdapter extends ArrayAdapter{
+    class myAdapter extends ArrayAdapter {
         List<String> mName;
         List<Integer> mImage;
         List mPhn;
         Context con;
 
-        public myAdapter( Context context, List name, List image, List phn ) {
-            super(context, 0,name);
+        public myAdapter(Context context, List name, List image, List phn) {
+            super(context, 0, name);
             this.mName = name;
             this.mImage = image;
             this.mPhn = phn;
@@ -102,18 +110,18 @@ public class ListActivity extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int position, View convertView,  ViewGroup parent) {
-         if  (convertView==null){
-               LayoutInflater layoutInflater = (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-               convertView = layoutInflater.inflate(R.layout.custom_layout, parent, false);
-          }
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                LayoutInflater layoutInflater = (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = layoutInflater.inflate(R.layout.custom_layout, parent, false);
+            }
             ImageView imageView = (ImageView) convertView.findViewById(R.id.tv_img);
             TextView textView = (TextView) convertView.findViewById(R.id.textView);
             textView.setText(mName.get(position));
             ((TextView) convertView.findViewById(R.id.tv_phn)).setText(mPhn.get(position).toString());
             imageView.setImageResource(mImage.get(position));
-            Log.i("GetView Methood","Getview Method call ");
-            Toast.makeText(con, "Position : "+ position, Toast.LENGTH_SHORT).show();
             return convertView;
         }
+
     }
+

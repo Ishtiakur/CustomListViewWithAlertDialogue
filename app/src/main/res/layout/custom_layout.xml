@@ -5,22 +5,22 @@
 
 
     android:layout_width="match_parent"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="20dp"
 
-    app:cardBackgroundColor="#f5a2df83"
+    app:cardBackgroundColor="#f5a19e9c"
     android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
-        android:background="#fff"
+
         android:layout_gravity="center"
         android:layout_height="wrap_content">
         <ImageView
-        android:id="@+id/tv_img"
-        android:paddingRight="10dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
+            android:id="@+id/tv_img"
+            android:paddingRight="10dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:orientation="vertical"
@@ -38,6 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_phn"
+                android:text="this is textView 2"
                 android:textSize="25sp"
                 android:textColor="#000"
                 android:textAlignment="center"/>
